@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spin-reverse-slow {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes wave {
+  0% { transform: translateX(0) translateZ(0) scaleY(1); }
+  50% { transform: translateX(-25%) translateZ(0) scaleY(0.8); }
+  100% { transform: translateX(-50%) translateZ(0) scaleY(1); }
+}
+
+@keyframes wormhole-distort {
+  0% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.5) rotate(180deg); }
+  100% { transform: scale(1) rotate(360deg); }
+}
+
+@layer utilities {
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+
+  .wormhole-active {
+    animation: wormhole-distort 5s infinite linear;
+  }
+}
+
+body {
+  @apply bg-black;
+}
+
+/* Estilos personalizados para el input range */
+input[type="range"] {
+  -webkit-appearance: none;
+  @apply w-full h-2 rounded-lg bg-gray-700;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  @apply w-4 h-4 rounded-full bg-blue-500 cursor-pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  @apply bg-blue-400 transform scale-110;
+}
+
+input[type="range"]::-moz-range-thumb {
+  @apply w-4 h-4 rounded-full bg-blue-500 cursor-pointer border-none;
+  transition: all 0.2s ease-in-out;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+  @apply bg-blue-400 transform scale-110;
+}
